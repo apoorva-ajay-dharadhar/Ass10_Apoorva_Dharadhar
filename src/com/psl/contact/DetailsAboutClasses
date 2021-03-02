@@ -1,0 +1,8 @@
+1.	Add contacts :- void addContact(Contact contact,List<Contact> contacts)
+Classes->   1)Contact.java
+			2)ContactService.java(addContact(Contact contact, List<Contact> contacts)), gives call to 
+			insertContact(List<Contact> contactList) present in AddContactToDB.java to add that 
+			record to the Database.
+			3)MainClass(With a switch to call addContact() from ContactService)
+			4)AddContactToDB(insertContact(List<Contact> contactList)) 
+			5)ConnectionUtil(Database Connection class)
