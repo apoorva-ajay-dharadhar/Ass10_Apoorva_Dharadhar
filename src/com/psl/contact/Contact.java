@@ -26,6 +26,11 @@ public class Contact {
 	public List<String> getContactNumber() {
 		return contactNumber;
 	}
+	@Override
+	public String toString() {
+		return "Contact [contactID=" + contactID + ", contactName=" + contactName + ", emailAddress=" + emailAddress
+				+ ", contactNumber=" + contactNumber + "]";
+	}
 	public void setContactNumber(List<String> contactNumber) {
 		this.contactNumber = contactNumber;
 	}

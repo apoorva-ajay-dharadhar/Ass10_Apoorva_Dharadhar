@@ -24,3 +24,7 @@ Read all the records from the database in a list
 enter the name to be searched
 search query
 display
+Classes-> SearchByName.java(Contains a main method
+		  List<Contact> readFromDB() reads all the values in a list and returns a list
+		  List<Contact> searchContactByName(String name, List<Contact> contact) throws ContactNotFoundException
+		  )
