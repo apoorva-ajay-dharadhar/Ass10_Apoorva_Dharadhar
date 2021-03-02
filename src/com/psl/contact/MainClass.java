@@ -35,7 +35,8 @@ public class MainClass {
 		case 1:
 		{
 			Contact c=new Contact();
-			cs.addContact(c, contactList);
+			contactList=cs.addContact(c, contactList);
+			System.out.println(contactList);
 			break;
 		}
 		}

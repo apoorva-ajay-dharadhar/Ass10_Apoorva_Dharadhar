@@ -6,3 +6,21 @@ Classes->   1)Contact.java
 			3)MainClass(With a switch to call addContact() from ContactService)
 			4)AddContactToDB(insertContact(List<Contact> contactList)) 
 			5)ConnectionUtil(Database Connection class)
+			
+---------------------------------------------------------------------------------
+2.	Void Remove contact(Contact contact, List<contact> contacts) throws ContactNotFoundException
+Read all the records from the database in a list
+enter the name to be searched in the list
+if the name not found throw some exception
+Classes -> ReadContactsFromDB.java(
+			1)List<Contact> getContactInfor() Gets the list of contacts present in the database)
+		   	2)updateDB(int id) updates the database for deletion
+		   	3)Contains main method
+		   	)
+		   	
+----------------------------------------------------------------------------------
+3. Contact searchContactByName(String name, List<Contact> contact) throws ContactNotFoundException
+Read all the records from the database in a list
+enter the name to be searched
+search query
+display

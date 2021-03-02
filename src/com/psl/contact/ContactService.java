@@ -10,7 +10,7 @@ public class ContactService {
 //	static //1.	Add contacts :- void addContact(Contact contact,List<Contact> contacts)
 //	List<Contact> contacts=new ArrayList<Contact>();
 	
-	public void addContact(Contact contact, List<Contact> contacts)
+	public List<Contact> addContact(Contact contact, List<Contact> contacts)
 	{
 		
 		Scanner sc=new Scanner(System.in);
@@ -37,7 +37,7 @@ public class ContactService {
 		contacts.add(contact);
 		AddContactToDB cdb=new AddContactToDB();
 		cdb.insertContact(contacts);
-		
+		return contacts;
 	}
 	
 	
