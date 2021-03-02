@@ -1,10 +1,16 @@
 package com.psl.contact;
 
+import com.psl.DBconnection.AddNewToExisting;
+import com.psl.DBconnection.PopulateFromDB;
 import com.psl.DBconnection.RemoveContactByID;
 import com.psl.DBconnection.SearchByName;
 import com.psl.DBconnection.SearchPhoneNumbers;
+import com.psl.DBconnection.SortContactsByNames;
 import com.psl.DBconnection.UpdateContact;
 import com.psl.Exceptions.ContactNotFoundException;
+import com.psl.contact.file.ReadFromFile;
+import com.psl.contact.file.ReadSerialize;
+import com.psl.contact.file.SerializeDeserializeFile;
 
 import java.util.*;
 public class MainClass {
@@ -41,8 +47,15 @@ public class MainClass {
 			System.out.println("3. Search the name in Contact List");
 			System.out.println("4. Search phone numbers");
 			System.out.println("5. Update contact numbers in contact ID");
+			System.out.println("6. Sort by contact names");
+			System.out.println("7. Read contacts from file");
+			System.out.println("8. Serialize");
+			System.out.println("9. Deserialize");
+			System.out.println("10. Populate From DB");
+			System.out.println("11. Add new contacts to existing contacts(In a Set)");
 			Scanner sc=new Scanner(System.in);
 			System.out.println("Enter your option");
+			Set<Contact> contactSet=new HashSet<Contact>();
 			int opt=sc.nextInt();
 			sc.nextLine();
 			switch(opt)
@@ -111,8 +124,63 @@ public class MainClass {
 				case 6:
 				{
 					//6.	void sortContactsByName(List<Contact> contacts)
+					SortContactsByNames sort=new SortContactsByNames();
+					sort.sortContactsByName(contactList);
+					break;
 				}
-			
+				case 7:
+				{
+					System.out.println("You have chosen read contacts from a file");
+					ReadFromFile rf=new ReadFromFile();
+					rf.readContactsFromFile(contactList, "File1.txt");
+					break;
+				}
+				case 8:
+				{
+					ReadSerialize rd=new ReadSerialize();
+					List<Contact> list=new ArrayList<Contact>();
+					List<Contact> lt=rd.readContactsFromFile(list, "Cnts1.txt");
+					SerializeDeserializeFile s=new SerializeDeserializeFile();
+					s.serializeContacts(lt, "Serialized1.txt");
+//					ArrayList<Contact> conts=s.deserializeContact("Serialized1.txt");
+//				for(Contact c: conts)
+//				{
+//					System.out.println(c);
+//				}
+				break;
+				}
+				case 9:
+				{
+//					ReadSerialize rd=new ReadSerialize();
+//					List<Contact> list=new ArrayList<Contact>();
+//					List<Contact> lt=rd.readContactsFromFile(list, "Cnts1.txt");
+					SerializeDeserializeFile s=new SerializeDeserializeFile();
+//					s.serializeContacts(lt, "Serialized1.txt");
+					ArrayList<Contact> conts=s.deserializeContact("Serialized1.txt");
+				for(Contact c: conts)
+				{
+					System.out.println(c);
+				}
+				break;
+				}
+				
+				case 10:
+				{
+					System.out.println("Populate from DB");
+					PopulateFromDB pdb=new PopulateFromDB();
+					contactSet=pdb.populateContactFromDb();
+					System.out.println(contactSet);
+					break;
+					
+				}
+				case 11:
+				{
+					System.out.println("Add new contacts to existing contacts(In a Set)");
+					AddNewToExisting addToExisting=new AddNewToExisting();
+					Set<Contact> conset=new HashSet<Contact>();
+					addToExisting.addContacts(contactList, contactSet);
+					//11.	Boolean addContacts(List<Contacts> existingContact,Set<Contact> newContacts)
+				}
 			}
 			
 			System.out.println("Do you want to continue?(0/1)");

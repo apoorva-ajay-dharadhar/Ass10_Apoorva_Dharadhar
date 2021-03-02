@@ -1,9 +1,10 @@
 package com.psl.contact;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.List;
 
-public class Contact{
+public class Contact  implements Serializable{
 
 	private int contactID;
 	public int getContactID() {
