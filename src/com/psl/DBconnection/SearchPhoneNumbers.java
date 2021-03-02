@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.psl.Exceptions.ContactNotFoundException;
 import com.psl.contact.Contact;
 
 public class SearchPhoneNumbers {
@@ -61,6 +62,7 @@ public class SearchPhoneNumbers {
 					n=null;
 					conts.add(n);
 					cont.setContactNumber(conts);
+				
 				}
 				m.add(cont); 
 				
@@ -73,7 +75,7 @@ public class SearchPhoneNumbers {
 		}
 		return m;
 	}
-	public static List<Contact> searchContactByNumber(String number, List<Contact> contact)
+	public static List<Contact> searchContactByNumber(String number, List<Contact> contact) throws ContactNotFoundException
 	{
 		List<Contact> searchList=new ArrayList<Contact>();
 		Connection cn=ConnectionUtil.getConnection();
@@ -114,6 +116,7 @@ public class SearchPhoneNumbers {
 					n=null;
 					conts.add(n);
 					cont.setContactNumber(conts);
+					throw new ContactNotFoundException("Phone number field empty");
 				}
 				searchList.add(cont);
 				//System.out.println(cont);
@@ -124,7 +127,10 @@ public class SearchPhoneNumbers {
 				e.printStackTrace();
 			}
 		
-			
+			if(searchList.isEmpty())
+			{
+				throw new ContactNotFoundException("No matching phone number found");
+			}
 			return searchList;
 		}
 	
@@ -141,7 +147,13 @@ public class SearchPhoneNumbers {
 		{
 			//System.out.println(c);
 		}
-		List<Contact> finalSearchList=searchContactByNumber(number, list);
+		List<Contact> finalSearchList = null;
+		try {
+			finalSearchList = searchContactByNumber(number, list);
+		} catch (ContactNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		for(Contact c: finalSearchList)
 		{
 			System.out.println(c);
