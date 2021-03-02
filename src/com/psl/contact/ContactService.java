@@ -12,7 +12,7 @@ public class ContactService {
 	
 	public List<Contact> addContact(Contact contact, List<Contact> contacts)
 	{
-		
+	//:- void addContact(Contact contact,List<Contact> contacts)	
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Enter the contactId");
 		int id=sc.nextInt();contact.setContactID(id);
@@ -34,11 +34,25 @@ public class ContactService {
 			contactNumbers.add(contactNum);
 		}
 		contact.setContactNumber(contactNumbers);
-		contacts.add(contact);
+		contacts.add(contact);//Added the contact to the list
+		//printAddedContact(contacts);
 		AddContactToDB cdb=new AddContactToDB();
-		cdb.insertContact(contacts);
+		//cdb.insertContact(contacts);
 		return contacts;
 	}
+	
+	public static void printAddedContact(List<Contact> l)
+	{
+		
+		for(Contact c: l)
+		{
+			System.out.println(c);
+			System.out.println("Above contact is added successfully");
+		}
+	}
+	
+	
+	
 	
 	
 //	public static void main(String[] args)

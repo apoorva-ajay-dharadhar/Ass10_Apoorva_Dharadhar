@@ -75,7 +75,7 @@ public class SearchPhoneNumbers {
 		}
 		return m;
 	}
-	public static List<Contact> searchContactByNumber(String number, List<Contact> contact) throws ContactNotFoundException
+	public static List<Contact> searchContactByNumber(String number) throws ContactNotFoundException
 	{
 		List<Contact> searchList=new ArrayList<Contact>();
 		Connection cn=ConnectionUtil.getConnection();
@@ -135,7 +135,61 @@ public class SearchPhoneNumbers {
 		}
 	
 	
-	public static void main(String[] args)
+	//List<Contact> SearchContactByNumber(String number, List<Contact> contact) throws ContactNotFoundException
+	
+	
+	public List<Contact> searchContactByNumber(String number, List<Contact> contact) throws ContactNotFoundException
+	{
+		List<Contact> searchList=new ArrayList<Contact>();
+		for(Contact c: contact)
+		{
+			List<String> nums=new ArrayList<String>();
+			List<String> number1=c.getContactNumber();
+			for(String str: number1)
+			{
+				for(int i=0;i<str.length();i++)
+				{
+					if(str.substring(i).contains(number))
+					{
+						searchList.add(c);
+					}
+				}
+				
+			}
+//			if(number1.contains(nums))
+//			{
+//				searchList.add(c);
+//			}
+		}
+		if(searchList.isEmpty())
+		{
+			throw new ContactNotFoundException("Could not find the record with this number");
+//			for(Contact c: searchList)
+//			{
+//				System.out.println(c);
+//			}
+		}
+	
+		
+		
+		return searchList;
+	}
+	
+	public void process(String numb, List<Contact> list)
+	{
+		try {
+			List<Contact> li=searchContactByNumber(numb,list );
+			for(Contact c: li)
+			{
+				System.out.println(c);
+			}
+			
+		} catch (ContactNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void processWithDB()
 	{
 		SearchPhoneNumbers sp=new SearchPhoneNumbers();
 		//sp.search();
@@ -149,7 +203,7 @@ public class SearchPhoneNumbers {
 		}
 		List<Contact> finalSearchList = null;
 		try {
-			finalSearchList = searchContactByNumber(number, list);
+			finalSearchList = searchContactByNumber(number);
 		} catch (ContactNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -159,8 +213,33 @@ public class SearchPhoneNumbers {
 			System.out.println(c);
 			
 		}
-		
 	}
+//	public static void main(String[] args)
+//	{
+//		SearchPhoneNumbers sp=new SearchPhoneNumbers();
+//		//sp.search();
+//		Scanner sc=new Scanner(System.in);
+//		System.out.println("Enter the phone number to be search..");
+//		String number=sc.nextLine();
+//		List<Contact> list=searchDB();
+//		for(Contact c: list)
+//		{
+//			//System.out.println(c);
+//		}
+//		List<Contact> finalSearchList = null;
+//		try {
+//			finalSearchList = searchContactByNumber(number);
+//		} catch (ContactNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		for(Contact c: finalSearchList)
+//		{
+//			System.out.println(c);
+//			
+//		}
+//		
+//	}
 
 	
 }

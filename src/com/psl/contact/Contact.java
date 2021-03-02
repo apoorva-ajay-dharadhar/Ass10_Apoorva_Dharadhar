@@ -1,8 +1,9 @@
 package com.psl.contact;
 
+import java.util.Comparator;
 import java.util.List;
 
-public class Contact {
+public class Contact{
 
 	private int contactID;
 	public int getContactID() {
@@ -38,7 +39,18 @@ public class Contact {
 	private String emailAddress;
 	private List<String> contactNumber;
 	
-
 	
+	public static Comparator<Contact> comparator1 = new Comparator<Contact>() {
+
+		public int compare(Contact s1, Contact s2) {
+			   String ContactName1 = s1.getContactName().toUpperCase();
+			   String ContactName2 = s2.getContactName().toUpperCase();
+
+			 
+			   return ContactName1.compareTo(ContactName2);
+		}
+	};
 	
 }
+	
+	

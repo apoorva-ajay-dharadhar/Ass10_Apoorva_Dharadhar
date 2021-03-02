@@ -69,6 +69,7 @@ public class SearchByName {
 	
 	public List<Contact> searchContactByName(String name, List<Contact> contact) throws ContactNotFoundException//keep the return type to void
 	{
+		//3.	Contact searchContactByName(String name, List<Contact> contact) throws ContactNotFoundException
 		int flag=0;
 		Contact cn=new Contact();
 		List<Contact> cntName=new ArrayList<Contact>();
@@ -94,13 +95,12 @@ public class SearchByName {
 		
 	}
 	
-	public static void main(String[] args)
+	
+	public void process(String name1,List<Contact> list)
 	{
-		Scanner sc=new Scanner(System.in);
-		System.out.println("Enter the name to be searched");
-		String name1=sc.nextLine();
-		List<Contact> list=new ArrayList<Contact>();
-		list=readFromDB();
+		
+		//List<Contact> list=new ArrayList<Contact>();
+	//	list=readFromDB();
 		
 		SearchByName sm=new SearchByName();
 		try {
@@ -119,6 +119,32 @@ public class SearchByName {
 			e.printStackTrace();
 		}
 	}
+	
+//	public static void main(String[] args)
+//	{
+//		Scanner sc=new Scanner(System.in);
+//		System.out.println("Enter the name to be searched");
+//		String name1=sc.nextLine();
+//		List<Contact> list=new ArrayList<Contact>();
+//		list=readFromDB();
+//		
+//		SearchByName sm=new SearchByName();
+//		try {
+//			List<Contact> cList=sm.searchContactByName(name1, list);
+//			System.out.println("Contact details");
+//			for(Contact c: cList)
+//			{
+//				if(c!=null)
+//				{
+//					System.out.println(c);
+//				}
+//				
+//			}
+//		} catch (ContactNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 	
 	
 }

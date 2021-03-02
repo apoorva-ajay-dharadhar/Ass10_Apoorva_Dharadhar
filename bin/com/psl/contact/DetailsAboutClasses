@@ -28,3 +28,29 @@ Classes-> SearchByName.java(Contains a main method
 		  List<Contact> readFromDB() reads all the values in a list and returns a list
 		  List<Contact> searchContactByName(String name, List<Contact> contact) throws ContactNotFoundException
 		  )
+
+-----------------------------------------------------------------------------------
+4.	Search should be able to find the contacts based on the partial input
+For example contact No is -8977448730
+	Then it should be able to find contacts based on any of the i/p provided as mentioned below:-
+a)	74
+b)	448
+c)	8730
+All contacts present these values should be added in searched list
+List<Contact> SearchContactByNumber(String number, List<Contact> contact) throws ContactNotFoundException
+
+
+Classes->SearchPhoneNumberByName.java(Contains a main method)
+Collects all the data from the database, puts it in a list
+After which pattern matching takes place with each record already in the list
+Keeps the data found during the search in the list, returns it and prints the output
+-----------------------------------------------------------------------------------------------------
+Completed all the above questions using just list, with the provision of doing the same using DB
+----------------------------------------------------------------------------------------------------
+5.	addContactNumber(int contactId, String contactNo, List<contact> contacts)
+Implement method to add provided contactNo to the existing list of contact numbers of the specified contact 
+Id. Update the appropriate contact object.
+
+
+
+
