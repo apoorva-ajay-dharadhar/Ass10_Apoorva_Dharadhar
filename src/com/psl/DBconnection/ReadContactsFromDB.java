@@ -85,6 +85,14 @@ public class ReadContactsFromDB{
 		
 		
 	}
+	
+	
+	//2.	Void Remove contact(Contact contact, List<contact> contacts) throws ContactNotFoundException
+	public static void removeContact(Contact contact, List<Contact> contacts) throws ContactNotFoundException
+	{
+		int cid=contact.getContactID();
+	}
+	
 		public static void main(String[] args) throws ContactNotFoundException
 		{
 			
@@ -94,12 +102,16 @@ public class ReadContactsFromDB{
 			
 			Scanner sc=new Scanner(System.in);
 			int id=sc.nextInt();
+			
 			Iterator<Contact> itr=list.iterator();
 			int flag=0;
 			while(itr.hasNext())
 			{
 				flag=0;
 				Contact c=itr.next();
+			//	removeContact(c, list);
+			
+				
 				int cid=c.getContactID();
 				if(cid==id)
 				{
